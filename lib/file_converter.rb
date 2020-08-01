@@ -1,4 +1,3 @@
-
 require './lib/reader'
 
 class FileConverter
@@ -12,6 +11,12 @@ class FileConverter
   def read
     File.read(@input)
   end
+
+  def write
+  
+
+  end
+
 
   def message
     puts "Created #{@output} containing #{@input.length} characters."
