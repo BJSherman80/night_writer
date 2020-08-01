@@ -18,4 +18,9 @@ class TranslatorTest < MiniTest::Test
     assert_equal ["h","e","l","l","o"], translator.split_message("hello")
   end
 
+  def test_it_can_translate_a_letter
+    translator = Translator.new
+    assert_equal ["0.", "..", ".."], translator.translate_letter("a")
+  end
+
 end
