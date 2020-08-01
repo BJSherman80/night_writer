@@ -4,12 +4,24 @@ require 'pry'
 class Translator
   #I need to take the message split it up into individual letters then
   #grab the matching key and return the value, join them and return that array.
-  def split_message(input)
+  def split_message input
     letters = input.split("").map do |letter|
       letter
+    end
+    letters
   end
 
+
+    def translate_letter(split_message)
+      result = []
+      dictionary[letter].each_slice(3).map do |one, two, three|
+        result << ["#{one}#{two}#{three}"]
+      end
   end
+
+
+
+
 
   def dictionary
     {
