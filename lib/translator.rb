@@ -20,6 +20,14 @@ class Translator
       end
     end
 
+    def translate_word(word)
+      split_message(word).map do |letter|
+        dictionary[letter].map do |symbol|
+          "#{symbol}"
+        end
+      end
+    end
+
 
 
 
