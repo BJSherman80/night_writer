@@ -30,23 +30,10 @@ class TranslatorTest < MiniTest::Test
   end
 
   def test_it_can_output_translated_word_in_columns
-    skip
     translator = Translator.new
-    result = [["00
-", "..
-", "..
-"], ["0.
-", "..
-", "..
-"], [".0
-", "00
-", "0.
-"]]
-    assert_equal result, translator.word_to_column("cat")
+    result = "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n"
 
-    # assert_equal ["00" , translator.word_to_column("cat")
-    #               ".."
-    #               ".."]
+    assert_equal result , translator.word_to_column("hello world")
   end
 
 end
