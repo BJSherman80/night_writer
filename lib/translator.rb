@@ -22,11 +22,24 @@ class Translator
 
     def translate_word(word)
       split_message(word).map do |letter|
-        dictionary[letter].map do |symbol|
-          "#{symbol}"
+        translate_letter(letter)
         end
       end
+
+
+
+    def word_to_column(word)
+      result = []
+      array = translate_word(word).flatten
+      array.each_slice(3).map do |symbol|
+        result << ["#{symbol}"]
+      end
+      result
     end
+
+
+
+
 
 
 
