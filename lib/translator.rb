@@ -29,13 +29,14 @@ class Translator
 
 
     def word_to_column(word)
-      result = []
-      array = translate_word(word).flatten
-      array.each_slice(3).map do |symbol|
-        result << ["#{symbol}"]
+      array = translate_word(word).transpose
+        columns = array.map do |symbol|
+         symbol.join(",") + "\n"
+        end
+        columns.join(",").gsub(",","")
       end
-      result
-    end
+
+
 
 
 
