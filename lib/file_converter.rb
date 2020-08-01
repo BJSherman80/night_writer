@@ -13,7 +13,6 @@ class FileConverter
   end
 
   def write
-  
 
   end
 
