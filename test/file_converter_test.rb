@@ -4,7 +4,6 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require 'mocha/minitest'
 require './lib/file_converter'
-require 'pry'
 
 class FileConverterTest < MiniTest::Test
 
