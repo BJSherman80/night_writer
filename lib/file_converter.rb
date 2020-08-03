@@ -3,12 +3,13 @@ require 'pry'
 
 class FileConverter
 
-  attr_reader :input_text, :input_chunk
+  attr_reader :input_text, :chunked_text
 
   def initialize(input, output)
     @input  = input
     @output = output
     read
+    input_chunk
     write
     message
   end
@@ -20,17 +21,17 @@ class FileConverter
   end
 
   def input_chunk
-    @chunked_text = @input_text.gsub(/\s+/, ' ').scan(/.{1,#{80}}/).map{|line|line + "\n"}.join(" ")
+      text = @input_text.scan(/.{1,80}/)
+      text.map do |text|
+        Translator.new.translator(text)
+    end.join("\n")
   end
 
   def write
     output = File.open(@output, "w")
-    output.write(Translator.new.translator(@input_text))
+    output.write(input_chunk)
     output.close
   end
-
-
-
 
   def message
     puts "Created #{@output} containing #{@input_text.length} characters."
