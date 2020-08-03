@@ -1,11 +1,9 @@
+require './lib/file_converter'
 require 'pry'
 
 
 class Translator
 
-
-  #I need to take the message split it up into individual letters then
-  #grab the matching key and return the value, join them and return that array.
   def split_message input
     letters = input.split("").map do |letter|
       letter
@@ -13,39 +11,25 @@ class Translator
     letters
   end
 
-
-    def translate_letter(letter)
-      dictionary[letter].map do |symbol|
-        "#{symbol}"
-      end
+  def translate_letter letter
+    dictionary[letter].map do |symbol|
+      "#{symbol}"
     end
+  end
 
-    def translate_word(word)
-      split_message(word).map do |letter|
-        translate_letter(letter)
-        end
+  def translate_word word
+   split_message(word).map do |letter|
+    translate_letter(letter)
+    end
+  end
+
+  def translator(output)
+   array = translate_word(output).transpose
+    columns = array.map do |symbol|
+     symbol.join(",") + "\n"
       end
-
-
-
-    def word_to_column(word)
-      array = translate_word(word).transpose
-        columns = array.map do |symbol|
-         symbol.join(",") + "\n"
-        end
-        columns.join(",").gsub(",","")
-      end
-
-
-
-
-
-
-
-
-
-
-
+      columns.join(",").gsub(",","")
+  end
 
 
   def dictionary
