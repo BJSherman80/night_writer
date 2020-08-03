@@ -1,24 +1,39 @@
-require './lib/reader'
+require './lib/translator'
+require 'pry'
 
 class FileConverter
+
+  attr_reader :input_text, :input_chunk
 
   def initialize(input, output)
     @input  = input
     @output = output
+    read
+    write
     message
   end
 
   def read
-    File.read(@input)
+    input = File.open(@input, "r")
+    @input_text = input.read.chomp
+    input.close
+  end
+
+  def input_chunk
+    @chunked_text = @input_text.gsub(/\s+/, ' ').scan(/.{1,#{80}}/).map{|line|line + "\n"}.join(" ")
   end
 
   def write
-
+    output = File.open(@output, "w")
+    output.write(Translator.new.translator(@input_text))
+    output.close
   end
 
 
+
+
   def message
-    puts "Created #{@output} containing #{@input.length} characters."
+    puts "Created #{@output} containing #{@input_text.length} characters."
   end
 
 
