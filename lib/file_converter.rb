@@ -1,5 +1,4 @@
 require './lib/translator'
-require 'pry'
 
 class FileConverter
 

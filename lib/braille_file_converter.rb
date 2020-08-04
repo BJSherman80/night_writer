@@ -1,5 +1,4 @@
 require './lib/braille_translator'
-require 'pry'
 
 class BrailleFileConverter
 

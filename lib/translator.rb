@@ -1,6 +1,6 @@
 require './lib/file_converter'
 require './lib/dictionary'
-require 'pry'
+
 
 class Translator<Dictionary
 
