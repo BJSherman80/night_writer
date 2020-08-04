@@ -13,11 +13,18 @@ class BrailleTranslatorTest < MiniTest::Test
     assert_instance_of BrailleTranslator, btranslator
   end
 
-  def test_it_can_convert_file_to_braille
+  def test_it_can_convert_file_to_braille_string
     btranslator = BrailleTranslator.new
-    input = "000..0\n....00\n....0."
+    input = "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n"
+    result = "0.00..0..0..0.0.0.0.0.0.0..00........000.00..00.0.000.0.0.0.00.0.."
+    assert_equal result, btranslator.get_braille_letters_into_string(input)
+  end
 
-    assert_equal [[]] , btranslator.get_braille_letter
+  def test_it_can_get_braille_letter
+    btranslator = BrailleTranslator.new
+    input = "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n"
+    btranslator.get_braille_letter_into_string(input)
+    assert_equal ["0.", "00", ".."] , btranslator.match_braille_letter
   end
 
   def test_it_can_translate
