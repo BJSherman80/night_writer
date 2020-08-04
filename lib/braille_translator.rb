@@ -1,6 +1,4 @@
 require './lib/braille_file_converter'
-require 'pry'
-
 
 class BrailleTranslator
 
@@ -17,63 +15,29 @@ class BrailleTranslator
  end
 
  def get_braille_letters(input)
-   result = []
-   seperated = get_braille_letters_into_string(input).scan(/.{6}/)
-   seperated.each_slice(1){|string| result << [string]}
-   result.flatten(1)
-  end
-
-  # result.each{|array| array.gsub("\n", "")}
-
-
-
-
- # def get_braille_letter_top(input)
- #   binding.pry
- #   @array1 = []
- #   strings = input.split
- #    strings.select do |string|
- #      @array1 << string[0..1]
- #    end
- #    @array1
- #  end
- #
- #  def get_braille_letter_middle(input)
- #    @array2 = []
- #    strings = input.split
- #     strings.select do |string|
- #       @array2 << string[2..3]
- #     end
- #     @array2
- #   end
- #
- #   def get_braille_letter_bottom(input)
- #     @array3 = []
- #     strings = input.split
- #      strings.select do |string|
- #        @array3 << string[4..6]
- #      end
- #      @array3
- #    end
-
-
-
-def match_braille_letter
-  binding.pry
-  braille_dictionary = dictionary.invert
-  braille_dictionary.any? ==
-  binding.pry
-
+ result = []
+ seperated = get_braille_letters_into_string(input).scan(/.{6}/)
+ seperated.each_slice(1){|string| result << [string]}
+ result.flatten(1)
 end
 
+def braille_strip(input)
+  braille_dictionary = dictionary.invert
+  hash = {}
+  braille_dictionary.each do |k,v|
+   hash[[k.join(" ").gsub(/\s+/, "")]] = v
+  end
+ hash
+end
 
-
-
-
-#array.transpose.reverse.reverse
-
-
-
+def braille_translator(input)
+  word = []
+  key = braille_strip(input)
+   get_braille_letters(input).each do |array|
+    word << key[array]
+  end
+ word.join("")
+end
 
   def dictionary
     {
