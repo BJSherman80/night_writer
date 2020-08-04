@@ -18,11 +18,13 @@ class BrailleTranslator
 
  def get_braille_letters(input)
    result = []
-   get_braille_letter_into_string(input).each_slice(3).map do |one, two, three|
-    result << ["#{one}\n","#{two}\n","#{three}\n"]
+   seperated = get_braille_letters_into_string(input).scan(/.{6}/)
+   seperated.each_slice(1){|string| result << [string]}
+   result.flatten(1)
   end
-  binding.pry
-end
+
+  # result.each{|array| array.gsub("\n", "")}
+
 
 
 
