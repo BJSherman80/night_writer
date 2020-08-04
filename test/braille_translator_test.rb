@@ -20,11 +20,11 @@ class BrailleTranslatorTest < MiniTest::Test
     assert_equal result, btranslator.get_braille_letters_into_string(input)
   end
 
-  def test_it_can_get_braille_letter
+  def test_it_can_get_braille_letters
     btranslator = BrailleTranslator.new
     input = "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n"
-    btranslator.get_braille_letter_into_string(input)
-    assert_equal ["0.", "00", ".."] , btranslator.match_braille_letter
+    btranslator.get_braille_letters_into_string(input)
+    assert_equal ["0.00.."], btranslator.get_braille_letters(input)[0]
   end
 
   def test_it_can_translate
@@ -32,4 +32,5 @@ class BrailleTranslatorTest < MiniTest::Test
     translator = Translator.new
     assert_equal [["00", "..", ".."],["0.", "..", ".."],[".0", "00", "0."]], translator.split_message( "000..0\n+....00\n+....0.\n ")
   end
+
 end
