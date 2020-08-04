@@ -3,7 +3,7 @@ require 'pry'
 
 class BrailleFileConverter
 
-  attr_reader :input_text, :chunked_text, :read_braille
+  attr_reader :input_text, :input_chunk, :read_braille
 
   def initialize(input, output)
     @input  = input

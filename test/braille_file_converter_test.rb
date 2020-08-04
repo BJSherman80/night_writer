@@ -19,10 +19,12 @@ class BrailleFileConverterTest < MiniTest::Test
   def test_it_can_read_txt_docs
     skip
     input = "braille.txt"
-    output = "message.txt"
+    output = "1_letter_message.txt"
     # input_text.stub(input_text).returns("000..0000.0.00\n+..000......0.0\n+........0...0.")
     # input_text = mock('text object')
     night_reader = BrailleFileConverter.new(input, output)
-    assert_equal "000..0000.0.00\n+..000......0.0\n+........0...0.", night_reader.input_text
+    assert_equal "0.
+    ..
+    .." , night_reader.input_chunk
   end
 end

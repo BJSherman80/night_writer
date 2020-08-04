@@ -20,18 +20,22 @@ class FileConverterTest < MiniTest::Test
     output = "braille.txt"
     input = "message1.txt"
     file_converter = FileConverter.new(input, output)
-    assert_equal "cat", file_converter.input_text
+    assert_equal "once upon a time at turing", file_converter.input_text
   end
 
 
   def test_it_can_write_docs
-    skip
     output = "braille.txt"
-    input = "message1.txt"
-    @input_text.stubs(write).returns("0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n")
-    braile = mock('text document')
+    input = "1_letter_message.txt"
+
+    # @input_text.stubs(write).returns("0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n")
+    # braile = mock('text document')
     night_writer = FileConverter.new(input, output)
-    assert_equal "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n", night_writer.write
+    assert_equal "0.
+..
+..
+", night_writer.input_chunk
+
   end
 
 
