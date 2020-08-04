@@ -1,6 +1,8 @@
 
-    def dictionary
-      {
+class Dictionary
+  attr_reader :dictionary
+  def initialize
+     @dictionary ={
       "a" => ["0.", "..", ".."],
       "b" => ["0.", "0.", ".."],
       "c" => ["00", "..", ".."],
@@ -28,7 +30,7 @@
       "y" => ["00", ".0", "00"],
       "z" => ["0.", ".0", "00"],
       " " => ["..", "..", ".."]
-
       }
 
     end
+  end

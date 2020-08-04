@@ -1,3 +1,4 @@
+require './lib/dictionary'
 require './lib/braille_file_converter'
 
 class BrailleTranslator
