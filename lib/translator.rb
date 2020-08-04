@@ -4,20 +4,21 @@ require 'pry'
 
 class Translator
 
-  def split_message input
+  def split_message (input)
     letters = input.split("").map do |letter|
       letter
     end
     letters
   end
 
-  def translate_letter letter
+  def translate_letter (letter)
     dictionary[letter].map do |symbol|
       "#{symbol}"
     end
   end
 
-  def translate_word word
+
+  def translate_word (word)
    split_message(word).map do |letter|
     translate_letter(letter)
     end
@@ -60,7 +61,8 @@ class Translator
     "x" => ["00", "..", "00"],
     "y" => ["00", ".0", "00"],
     "z" => ["0.", ".0", "00"],
-    " " => ["..", "..", ".."]
+    " " => ["..", "..", ".."],
+    "\n" =>[ "", "", ""]
     }
 
   end

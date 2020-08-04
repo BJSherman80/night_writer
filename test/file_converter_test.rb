@@ -20,7 +20,7 @@ class FileConverterTest < MiniTest::Test
     output = "braille.txt"
     input = "message1.txt"
     file_converter = FileConverter.new(input, output)
-    assert_equal "hello world", file_converter.input_text
+    assert_equal "cat", file_converter.input_text
   end
 
 
@@ -34,12 +34,7 @@ class FileConverterTest < MiniTest::Test
     assert_equal "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n", night_writer.write
   end
 
-  def test_it_can_chunk_doc
-    output = "braille.txt"
-    input = "message.txt"
-    night_writer = FileConverter.new(input, output)
-    assert_equal "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n bb\n", night_writer.input_chunk
-  end
+
 
 
 

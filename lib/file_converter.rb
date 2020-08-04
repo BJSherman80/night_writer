@@ -9,9 +9,7 @@ class FileConverter
     @input  = input
     @output = output
     read
-    input_chunk
     write
-    message
   end
 
   def read
@@ -30,37 +28,7 @@ class FileConverter
   def write
     output = File.open(@output, "w")
     output.write(input_chunk)
+    puts "Created #{@output} containing #{@input_text.length} characters."
     output.close
   end
-
-  def message
-    puts "Created #{@output} containing #{@input_text.length} characters."
-  end
-
-
-# class FileConverter
-#
-#   def initialize(input, output)
-#     @reader = Reader.new
-#     @input  = @reader.read
-#     @output = output
-#     message
-#   end
-#
-#   def message
-#     puts "Created #{@output} containing #{@input.length} characters."
-#   end
-
-  # def encode_file_to_braille
-  #   # I wouldn't worry about testing this method
-  #   # unless you get everything else done
-  #   plain = reader.read
-  #   braille = encode_to_braille(plain)
-  # end
-  #
-  # def encode_to_braille(input)
-  #   # you've taken in an INPUT string
-  #   # do the magic
-  #   # send out an OUTPUT string
-  # end
 end
